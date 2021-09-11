@@ -9,4 +9,16 @@
 			<tag>Test</tag>
 		</categories>
 	</post>
+	
+	<post>
+		<body>
+			To undo git add before a commit, run git reset file.c or git reset to unstage all changes.
+			<citation>https://www.freecodecamp.org/news/how-to-undo-a-git-add/</citation>
+		</body>
+		<author>Mateus</author>
+		<datetime>2021/09/11 19:55:17</datetime>
+		<categories>
+			<tag>git</tag>
+		</categories>
+	</post>
 </log>
