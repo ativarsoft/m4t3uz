@@ -36,17 +36,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<title>Log</title>
 			</head>
 			<body>
-				<!-- TODO: place an if statement here. -->
-				<form>
-					<p>
-						<div>
-							<textarea style="width: 100%;" rows="5" />
-						</div>
-						<div style="text-align: center;">
-							<input type="submit" value="Enviar Post" />
-						</div>
-					</p>
-				</form>
 				<xsl:for-each select="log/post">
 					<div style="border: solid 1px #aaa; margin: 0.2em 0 0.2em 0; padding: 0.2em;">
 						<p>
