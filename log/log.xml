@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="log.xsl"?>
+<log>
+	<post>
+		<body>Hello world! <bold>bold</bold></body>
+		<author>Mateus</author>
+		<datetime>0</datetime>
+		<categories>
+			<tag>Test</tag>
+		</categories>
+	</post>
+</log>
