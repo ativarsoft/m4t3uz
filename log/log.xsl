@@ -22,7 +22,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     </xsl:template>
     
     <xsl:template match="hr">
-		<![CDATA[<hr style="border: 1px solid #aaa;" />]]>
+		<hr style="border: 1px solid #aaa;" />
 	</xsl:template>
     
     <xsl:template match="citation">
