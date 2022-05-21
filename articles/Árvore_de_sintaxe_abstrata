@@ -1,0 +1,9 @@
+<templatizer>
+	<p>Em ciência da computação, uma <b>árvode de sintaxe abstrata<> (abstract syntax tree, <b>AST</b>), ou simplesmente <b>árvore de sintaxe</b>, é uma representação de árvore da estrutura de sintaxe abstrata de texto (frequentemente código fonte) escrita em uma linguagem formal. Cada nódulo da árvore denota uma idéia que ocorre no texto.</p>
+
+	<p>A sintaxe é "abstrata" no sentido que ela não representa cada detalhe aparecendo na sintaxe real, mas ao invés disso só a detalhes estruturais ou relacionados ao conteúdo. Por exemplo, os agrupamento parêntesis são implícitos ou a estrutura da árvore, então esses não tem que ser representados como nódulos separados. Similarmente, a ideia sintatica como um enunciado se-condição-então pode ser denotado por meios de um único nodulo com três galhos.</p>
+	
+	<p>Isso distingue árvores de sintaxe abstrata de árvores de sintaxe concretas, tradicionalmente designadas como árvores de análise. Árvores de análise são tipicamente construídas por um parser durante a tradução de código funte e processo de compilação. Uma vez construída, informação adicional é adicionada à AST por meios de processamento subsequente, ex. análise contextual.</p>
+	
+	<p>Árvores de sintaxe abstrata são também utilizadas em análise de programa e sistemas de transformação de programa.</p>
+</templatizer>
