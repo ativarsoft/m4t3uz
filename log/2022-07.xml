@@ -21,7 +21,21 @@ machine word.
 		<author>Mateus</author>
 		<datetime>2022/07/08 01:34AM-02:18AM</datetime>
 		<categories>
-			<tag>Web Development</tag>
+			<tag>Templatizer</tag>
+		</categories>
+	</post>
+
+	<post>
+		<body>
+I could dump Templatizer AST as bytecode from Linux
+and run it on
+Leaf so I won't need to implement a XML library for my
+OS.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022/07/08 6:32 PM</datetime>
+		<categories>
+			<tag>Templatizer</tag>
 		</categories>
 	</post>
 </log>
