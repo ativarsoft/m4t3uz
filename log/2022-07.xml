@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="log.xsl"?>
+<log>	
+	<post>
+		<body>
+Templatizer plugins should not depend on any libraries.
+Not even a runtime library.
+<br/>
+The higher level language used on the plugin forbids
+pointers.
+<br/>
+Structs, arrays and strings are incompatible
+and can't be passed as a function parameter
+so they must be filled element by element.
+<br/>
+Getters and setters should be used to fill and retrieve
+elements from them one by one, character by character,
+element by element, field by field, machine word by
+machine word.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022/07/08 01:34AM-02:18AM</datetime>
+		<categories>
+			<tag>Web Development</tag>
+		</categories>
+	</post>
+</log>
