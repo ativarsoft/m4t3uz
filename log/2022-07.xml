@@ -38,4 +38,39 @@ OS.
 			<tag>Templatizer</tag>
 		</categories>
 	</post>
+
+	<post>
+		<body>
+I could to create a Templatizer backend for D
+in the future.
+So I can continue writing Leaf in D.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022/07/11 5:44 PM</datetime>
+		<categories>
+			<tag>Templatizer</tag>
+			<tag>Leaf</tag>
+		</categories>
+	</post>
+
+	<post>
+		<body>
+Or I could write just enough D to run Templatizer
+bytecode.
+<br/>
+Templatizer should be something like Dartmouth BASIC:
+a series of complex instructions. Something like
+Assembly. It could support the 'label' instruction and
+the 'goto' instruction. The '@' symbol works like the
+read instruction. The plugin translates input from stdin
+(POST data) that could be in XML or JSON or, maybe, even
+binary data like XDR if run locally on the machine.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022-07-13 8:04 PM</datetime>
+		<categories>
+			<tag>Templatizer</tag>
+			<tag>Leaf</tag>
+		</categories>
+	</post>
 </log>
