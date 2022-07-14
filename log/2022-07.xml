@@ -73,4 +73,16 @@ binary data like XDR if run locally on the machine.
 			<tag>Leaf</tag>
 		</categories>
 	</post>
+
+	<post>
+		<body>
+List macros in C.
+<citation>https://man7.org/linux/man-pages/man3/list.3.html</citation>
+		</body>
+		<author>Mateus</author>
+		<datetime>2022-07-14 12:17 AM</datetime>
+		<categories>
+			<tag>C</tag>
+		</categories>
+	</post>
 </log>
