@@ -34,6 +34,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<head>
 				<meta charset="UTF-8" />
 				<title>Log</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			</head>
 			<body>
 				<xsl:for-each select="log/post">
