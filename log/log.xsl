@@ -10,24 +10,24 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" encoding="utf-8" indent="yes" />
 	
 	<xsl:template match="bold">
-        <span style="font-weight:bold;">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
+		<span style="font-weight:bold;">
+            		<xsl:apply-templates/>
+        	</span>
+	</xsl:template>
 
-    <xsl:template match="italic">
-        <span style="font-style:italic;">
-            <xsl:apply-templates />
-        </span>
-    </xsl:template>
-    
-    <xsl:template match="hr">
+	<xsl:template match="italic">
+		<span style="font-style:italic;">
+			<xsl:apply-templates />
+		</span>
+	</xsl:template>
+
+	<xsl:template match="hr">
 		<hr style="border: 1px solid #aaa;" />
 	</xsl:template>
     
-    <xsl:template match="citation">
-		<sup><a href="{current()/@href}">[src]</a></sup>
-    </xsl:template>
+	<xsl:template match="citation">
+		<sup><a href="{current()}">[src]</a></sup>
+	</xsl:template>
     
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
