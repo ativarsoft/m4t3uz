@@ -85,4 +85,30 @@ List macros in C.
 			<tag>C</tag>
 		</categories>
 	</post>
+
+	<post>
+		<body>
+Functions can be inlined in C by writing them as macros.
+Templates can also be created that way.
+Compilers can usually inline functions by themselves
+without the programmer explictly inlining them.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022-07-19 8:33 PM</datetime>
+		<categories>
+			<tag>C</tag>
+		</categories>
+	</post>
+
+	<post>
+		<body>
+Queues can be used to store array blocks.
+Each element of the queue has a fixed-size array.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022-07-20 3:28 AM</datetime>
+		<categories>
+			<tag>C</tag>
+		</categories>
+	</post>
 </log>
