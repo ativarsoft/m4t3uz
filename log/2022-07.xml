@@ -104,6 +104,8 @@ without the programmer explictly inlining them.
 		<body>
 Queues can be used to store array blocks.
 Each element of the queue has a fixed-size array.
+It is possible to use n functions like strncpy
+with the sizeof operator.
 		</body>
 		<author>Mateus</author>
 		<datetime>2022-07-20 3:28 AM</datetime>
