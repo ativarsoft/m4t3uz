@@ -24,4 +24,25 @@ idea because I end up using C libraries and libc anyway.
 			<tag>Life</tag>
 		</categories>
 	</post>
+
+	<post>
+		<body>
+AWS VPN probably allows having multiple static IPs and
+port fowarding.
+<hr/>
+It is possible to create functions that allocate and
+free memory on the same scope and call a callback in
+between. The callback can be provided as a function
+argument, similar to what functional languages do.
+<hr/>
+Sell NextCloud.
+		</body>
+		<author>Mateus</author>
+		<datetime>2022-08-02 04:02 AM</datetime>
+		<categories>
+			<tag>Cloud</tag>
+			<tag>C</tag>
+			<tag>Security</tag>
+		</categories>
+	</post>
 </log>
