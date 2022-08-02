@@ -64,4 +64,8 @@ body {
 	body {
 		flex-wrap: wrap;
 	}
+
+	#menu:first-child {
+		flex-basis: 100%;
+	}
 }
