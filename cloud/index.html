@@ -14,10 +14,26 @@
   <div id="content">
    <h2>Criar Máquina Virtual</h2>
    <form>
-    <select>
-     <option>Debian 11 (Bullseye)</option>
-    </div>
-    <input id="btncreatevm" type="button" value="Create"/>
+    <h3>Name</h3>
+    <p>
+     Select a unique name for the virtual machine.
+     Names may contain only alphanumeric characters.
+    </p>
+    <p>
+     <input id="vmname" type="text"/>
+    </p>
+    <h3>Operating system</h3>
+    <p>
+     Select an operating system to be installed on the virtual machine.
+    </p>
+    <p>
+     <select>
+      <option>Debian 11 (Bullseye)</option>
+     </div>
+    </p>
+    <p style="margin-top: 4em; align: right;">
+     <input id="btncreatevm" type="button" value="Create"/>
+    </p>
    </form>
    <script>
 var bt = document.getElementById('btncreatevm');
