@@ -60,7 +60,7 @@ body {
 	border-radius: 5px;
 }
 
-@media screen and (max-width:990px) {
+@media screen and (max-width:2000px) {
 	body {
 		flex-wrap: wrap;
 	}
