@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8"/>
+  <title>cloud-c</title>
+  <link rel="stylesheet" href="layout.css">
+ </head>
+ <body>
+  <div id="menu">
+   <ul>
+    <li>Overview</li>
+   </ul>
+  </div>
+  <div id="content">
+   <h2>Criar Máquina Virtual</h2>
+   <form>
+    <select>
+     <option>Debian 11 (Bullseye)</option>
+    </div>
+    <input id="btncreatevm" type="button" value="Create"/>
+   </form>
+   <script>
+var bt = document.getElementById('btncreatevm');
+bt.addEventListener('click', clickCreateVM, false);
+
+function clickCreateVM()
+{
+    var vmname = "testvm";
+    var osname = "debian";
+    var osversion = "11.0.0";
+
+    var xhr = new XMLHttpRequest();
+    var url = "url";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            if (!("message" in json)) {
+                alert("Invalid server response.");
+                return;
+            }
+            console.log(json.message);
+        }
+    };
+    var data = JSON.stringify({
+        "name": vmname,
+        "osname": osname,
+        "osversion": osversion
+    });
+    xhr.send(data);
+}
+   </script>
+ </body>
+</html>
