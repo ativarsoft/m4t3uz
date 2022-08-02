@@ -65,7 +65,7 @@ body {
 		flex-wrap: wrap;
 	}
 
-	#menu:first-child {
+	#menu {
 		flex-basis: 100%;
 	}
 }
