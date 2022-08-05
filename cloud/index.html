@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>cloud-c</title>
-  <link rel="stylesheet" href="layout.css?v=1.0.5">
+  <link rel="stylesheet" href="layout.css?v=1.0.6">
  </head>
  <body>
   <div id="menu" class="layout-bar">
@@ -20,7 +20,7 @@
    <h2>Lista de Máquinas Virtuais</h2>
    <form>
     <div><p>Nenhuma máquina virtual encontrada.</p></div>
-    <input type="button" value="Recarregar"/>
+    <input id="btnvmlistrefresh" type="button" value="Recarregar"/>
    </form>
    <h2>Criar Máquina Virtual</h2>
    <form>
@@ -30,7 +30,7 @@
      Names may contain only alphanumeric characters.
     </p>
     <p>
-     <input id="vmname" type="text"/>
+     <input id="createvmname" name"vmname" type="text"/>
     </p>
     <h3>Operating system</h3>
     <p>
@@ -46,9 +46,27 @@
      <input id="btncreatevm" type="button" value="Create"/>
     </p>
    </form>
+   <h2>Delete Virtual Machine</h2>
+   <form>
+    <p>Type the name of the virtual machine to be deleted.</p>
+    <p>
+     <input id="deletevmname" name="vmname" type="text"/>
+    </p>
+    <p>
+     <input id="btndeletevm" type="button" value="Delete"/>
+    </p>
+   </form>
    <script>
-var bt = document.getElementById('btncreatevm');
+var bt;
+bt = document.getElementById('btncreatevm');
 bt.addEventListener('click', clickCreateVM, false);
+bt = document.getElementById('btnvmlistrefresh');
+bt.addEventListener('click', clickVMListRefresh, false);
+
+function getAPIURL(endpoint)
+{
+    return 'https://api.ativarsoft.com/cgi-bin/cloud/' + endpoint;
+}
 
 function clickCreateVM()
 {
@@ -57,7 +75,7 @@ function clickCreateVM()
     var osversion = "11.0.0";
 
     var xhr = new XMLHttpRequest();
-    var url = "url";
+    var url = getAPIURL('definevm');
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
@@ -75,6 +93,46 @@ function clickCreateVM()
         "osname": osname,
         "osversion": osversion
     });
+    xhr.send(data);
+}
+
+function clickVMListRefresh()
+{
+    var xhr = new XMLHttpRequest();
+    var url = getAPIURL('listvms');
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            if (!("message" in json)) {
+                alert("Invalid server response.");
+                return;
+            }
+            console.log(json.message);
+        }
+    };
+    var data = JSON.stringify({});
+    xhr.send(data);
+}
+
+function clickDeleteVM()
+{
+    var xhr = new XMLHttpRequest();
+    var url = getAPIURL('undefinevm');
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            if (!("message" in json)) {
+                alert("Invalid server response.");
+                return;
+            }
+            console.log(json.message);
+        }
+    };
+    var data = JSON.stringify({});
     xhr.send(data);
 }
    </script>
