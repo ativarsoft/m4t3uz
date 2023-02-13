@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>Mateus de Lima Oliveira's log</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+    <!-- optional CDN for Foundation Icons ^^ -->
   </head>
   <body>
     <a href=".."><img src="../ativarsoft.png" style="height: 2em;"/></a>
@@ -12,11 +19,41 @@
       <li><a href="2022-07.xml">July 2022</a></li>
       <li><a href="2022-08.xml">August 2022</a></li>
     </ul>
+
+    Maybe I will drop some opinions of mine here...
+
+    <h2>Nutrition</h2>
     <p>
       <a href="https://www.verywellhealth.com/fruit-and-vegetable-allergies-symptoms-and-diagnosis-1323908">
         Mugwort allergies
       </a>
-      are associated with sensitivities to peach, lychee, mango, grape, celery, carrot, parsley, fennel, garlic, cabbage, broccoli, coriander, cumin, sunflower seeds, and peanuts.
+      are associated with sensitivities to peach, lychee, mango, grape, celery, carrot, parsley, fennel,
+      garlic, cabbage, broccoli, coriander, cumin, sunflower seeds, and peanuts.
     </p>
+
+    <h2>Rust programming language</h2>
+    <p>
+      The <a href="https://doc.rust-lang.org/reference/linkage.html">staticlib</a> linkage type in Rust
+      produces static library binaries that include the runtime and all the dependencies.
+      According to the manual, "the purpose of this output type is to create a static library containing
+      all of the local crate's code along with all upstream dependencies".
+    </p>
+    
+    <footer>
+      <div class="grid-x grid-margin-y expanded">
+        <div class="medium-6 cell">
+          <ul class="menu align-right">
+            <li class="menu-text">Copyright © 2023 Mateus de Lima Oliveira</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
   </body>
 </html>
