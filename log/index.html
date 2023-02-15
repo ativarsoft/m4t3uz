@@ -32,37 +32,52 @@
 
     <article class="grid-container">
       <div class="grid-y grid-margin-y">
-      <div class="grid-x grid-margin-x">
-        <div class="large-6 cell">
-          <p><img style="height: 12em;" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Detail_of_mugwort_mature_leaf.jpg" alt="Mugwort photo"></p>
+        <div class="grid-x grid-margin-x">
+          <div class="large-6 cell">
+            <p><img style="height: 12em;" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Detail_of_mugwort_mature_leaf.jpg" alt="Mugwort photo"></p>
+          </div>
+          <div class="large-6 cell">
+            <h2>Nutrition</h2>
+            <p>
+              <a href="https://www.verywellhealth.com/fruit-and-vegetable-allergies-symptoms-and-diagnosis-1323908">
+                Mugwort allergies
+              </a>
+              are associated with sensitivities to peach, lychee, mango, grape, celery, carrot, parsley, fennel,
+              garlic, cabbage, broccoli, coriander, cumin, sunflower seeds, and peanuts.
+            </p>
+          </div>
         </div>
-        <div class="large-6 cell">
-          <h2>Nutrition</h2>
-          <p>
-            <a href="https://www.verywellhealth.com/fruit-and-vegetable-allergies-symptoms-and-diagnosis-1323908">
-              Mugwort allergies
-            </a>
-            are associated with sensitivities to peach, lychee, mango, grape, celery, carrot, parsley, fennel,
-            garlic, cabbage, broccoli, coriander, cumin, sunflower seeds, and peanuts.
-          </p>
+
+        <div class="grid-x grid-margin-x">
+          <div class="large-6 cell">
+            <p><img style="height: 12em;" src="https://raw.githubusercontent.com/rust-lang/rust-artwork/master/logo/rust-logo-blk.svg" alt="Rust programming language logo"></p>
+          </div>
+          <div class="large-6 cell">
+            <h2>Rust programming language</h2>
+            <p>
+              The <a href="https://doc.rust-lang.org/reference/linkage.html">staticlib</a> linkage type in Rust
+              produces static library binaries that include the runtime and all the dependencies.
+              According to the manual, "the purpose of this output type is to create a static library containing
+              all of the local crate's code along with all upstream dependencies".
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="grid-x grid-margin-x">
-        <div class="large-6 cell">
-          <p><img style="height: 12em;" src="https://raw.githubusercontent.com/rust-lang/rust-artwork/master/logo/rust-logo-blk.svg" alt="Rust programming language logo"></p>
-        </div>
-        <div class="large-6 cell">
-          <h2>Rust programming language</h2>
-          <p>
-            The <a href="https://doc.rust-lang.org/reference/linkage.html">staticlib</a> linkage type in Rust
-            produces static library binaries that include the runtime and all the dependencies.
-            According to the manual, "the purpose of this output type is to create a static library containing
-            all of the local crate's code along with all upstream dependencies".
-          </p>
-        </div>
-      </div>
-      </div>
+      <article>
+<h2>Operating system development in modern languages and static libraries</h2>
+
+It is difficult, in my opinion, to write C programs that include multiple static libraries in them in modern programming languages.
+Modern programming languages usually include a runtime library. Rust, D and Ada all include a runtime.
+
+The Rust runtime is very minimal but it is required because it includes definitions for basic integer types, vectors and others. The <code>no_std</code> macro leaves only operating system independent code that do not depend on allocations.
+
+That is analogous to -betterC in D. betterC removes the runtime library entirely. There is no GC, TypeInfo, or allocations.
+
+Neither Rust does not require runtime initialization when Rust libraries are linked statically.
+Ada requires a runtime initialization by calling adainit and adafinal.
+D also requires runtime initialization when not in -betterC mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
+      </article>
 
       <div class="grid-y grid-margin-y">
       <div class="medium-4 cell">
