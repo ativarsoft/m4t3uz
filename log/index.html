@@ -31,6 +31,20 @@
       <!-- / logo and ad break -->
 
     <article class="grid-container">
+
+      <div class="grid-y grid-margin-y">
+        <div class="medium-4 cell">
+          <a href=".."><img src="../ativarsoft.png" style="height: 2em;"/></a>
+          <h1>Mateus de Lima Oliveira's log</h1>
+          Maybe I will drop some opinions of mine here...
+          <ul>
+            <li><a href="2021-09.xml">September 2021</a></li>
+            <li><a href="2022-07.xml">July 2022</a></li>
+            <li><a href="2022-08.xml">August 2022</a></li>
+          </ul>
+        </div>
+      </div>
+
       <div class="grid-y grid-margin-y">
         <div class="grid-x grid-margin-x">
           <div class="large-6 cell">
@@ -62,34 +76,25 @@
             </p>
           </div>
         </div>
-      </div>
 
-      <article>
-<h2>Operating system development in modern languages and static libraries</h2>
-
-It is difficult, in my opinion, to write C programs that include multiple static libraries in them in modern programming languages.
-Modern programming languages usually include a runtime library. Rust, D and Ada all include a runtime.
-
-The Rust runtime is very minimal but it is required because it includes definitions for basic integer types, vectors and others. The <code>no_std</code> macro leaves only operating system independent code that do not depend on allocations.
-
-That is analogous to -betterC in D. betterC removes the runtime library entirely. There is no GC, TypeInfo, or allocations.
-
-Neither Rust does not require runtime initialization when Rust libraries are linked statically.
-Ada requires a runtime initialization by calling adainit and adafinal.
-D also requires runtime initialization when not in -betterC mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
-      </article>
-
-      <div class="grid-y grid-margin-y">
-      <div class="medium-4 cell">
-        <a href=".."><img src="../ativarsoft.png" style="height: 2em;"/></a>
-        <h1>Mateus de Lima Oliveira's log</h1>
-        Maybe I will drop some opinions of mine here...
-        <ul>
-          <li><a href="2021-09.xml">September 2021</a></li>
-          <li><a href="2022-07.xml">July 2022</a></li>
-          <li><a href="2022-08.xml">August 2022</a></li>
-        </ul>
-      </div>
+        <div class="grid-x grid-margin-x">
+          <h2>Operating system development in modern languages and static libraries</h2>
+          <p>
+            It is difficult, in my opinion, to write C programs that include multiple static libraries in them in modern programming languages.
+            Modern programming languages usually include a runtime library. Rust, D and Ada all include a runtime.
+          </p>
+          <p>
+            The Rust runtime is very minimal but it is required because it includes definitions for basic integer types, vectors and others. The <code>no_std</code> macro leaves only operating system independent code that do not depend on allocations.
+          </p>
+          <p>
+            That is analogous to -betterC in D. betterC removes the runtime library entirely. There is no GC, TypeInfo, or allocations.
+          </p>
+          <p>
+            Neither Rust does not require runtime initialization when Rust libraries are linked statically.
+            Ada requires a runtime initialization by calling adainit and adafinal.
+            D also requires runtime initialization when not in -betterC mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
+          </p>
+        </div>
       </div>
     </article>
     
