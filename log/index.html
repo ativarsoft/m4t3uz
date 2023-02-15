@@ -91,11 +91,17 @@
             <p>
               That is analogous to -betterC in D. betterC removes the runtime library entirely. There is no GC, TypeInfo, or allocations.
             </p>
-            <p>
-              Neither Rust does not require runtime initialization when Rust libraries are linked statically.
-              Ada requires a runtime initialization by calling adainit and adafinal.
-              D also requires runtime initialization when not in -betterC mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
-            </p>
+            <ul>
+              <li>
+                Rust does not require runtime initialization when Rust libraries are linked statically.
+              </li>
+              <li>
+                Ada requires a runtime initialization by calling adainit and adafinal.
+              </li>
+              <li>
+                D also requires runtime initialization when not in -betterC mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
