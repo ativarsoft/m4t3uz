@@ -102,6 +102,12 @@
                 D also requires runtime initialization when not in <a href="https://dlang.org/spec/betterc.html">betterC</a> mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
               </li>
             </ul>
+            <p>
+              In previous versions, <code>cargo init</code> created libraries by default instead of binaries.
+              Those modules contained Rust-only code which were linked to static or dynamic libraries written in C, including the C standard library or any operating system library.
+              Similarly, Ada libraries contain only Ada code.
+              In fact, <code>.a</code> libraries can be linked just like <code>.o</code> object files, which in turn map to a source file written in a specific language.
+            </p>
             <h3>External links</h3>
             <ul>
               <li><a href="https://dlang.org/">D Programming Language</a></li>
