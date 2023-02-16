@@ -108,6 +108,21 @@
               Similarly, Ada libraries contain only Ada code.
               In fact, <code>.a</code> libraries can be linked just like <code>.o</code> object files, which in turn map to a source file written in a specific language.
             </p>
+              <a href="https://en.m.wikipedia.org/wiki/Virtual_address_space">
+                Virtual addressing
+              </a>
+              can be used in addition to safe programming languages.
+              That allows the developer to include legacy code written in older programming languages.
+            <p>
+            <p>
+              Only the root user can run programs which will run as a different user (except for setuid).
+              Daemons can fork its process in order to have a process running under an unprivileged user in order to insulate each API request from each other.
+            </p>
+            <p>
+              Therefore the only major concern is the part of the programs that parse the request input (such as JSON or XML) which contain the authentication data of the request and the socket connection itself.
+              The part of the server that deals with such type of data should be handled by a carefully verified framework written in a secure language, and the parts which contain code written in an older programming language should be in worker processes which are forked or executed.
+            </p>
+            </p>
             <h3>External links</h3>
             <ul>
               <li><a href="https://dlang.org/">D Programming Language</a></li>
