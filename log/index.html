@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
     <!-- optional CDN for Foundation Icons ^^ -->
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   </head>
   <body>
 
@@ -176,6 +180,7 @@
               Therefore the only major concern is the part of the programs that parse the request input (such as JSON or XML) which contain the authentication data of the request and the socket connection itself.
               The part of the server that deals with such type of data should be handled by a carefully verified framework written in a secure language, and the parts which contain code written in an older programming language should be in worker processes which are forked or executed.
             </p>
+
             <h2>Development roadmap</h2>
             <p>
               The following is my future development:
@@ -185,6 +190,7 @@
               <li>Remove autotools from Quick</li>
               <li>Merge Quick with Templatizer</li>
             </ol>
+
             <h2>JIT</h2>
             <ul>
               <li>GNU libjit (<a href="https://packages.debian.org/bullseye/libgccjit-10-dev">libgccjit-10-dev</a>)</li>
@@ -193,6 +199,35 @@
             <p>
               <a href="https://llvm.org/docs/tutorial/">Kaleidoscope</a> is an example of a JIT language that uses the LLVM code generation.
             </p>
+
+            <h3>LLVM code generation</h3>
+            <p>
+              <code>llvm-config</code> is similar to <code>pkg-config</code>
+              but it is specific to LLVM code generation. llvm-config must be
+              found in <code>$PATH</code> for it to work. It is expected to be
+              only one llvm toolchain associated with that <code>llvm-config</code>.
+              That toolchain is responsible for code generation and may have
+              different architectures as targets.
+            </p>
+
+            <p>
+              Steps for producing bitcode with llvm-dev:
+            </p>
+
+<pre><code class="language-make">LLVM_CFLAGS=$(shell llvm-config --cflags)
+LLVM_LDFLAGS=$(shell llvm-config --ldflags --libs)
+</code></pre>
+
+            <ol>
+              <li>Create a new Pollen plug-in</li>
+              <li>Add CFLAGS and LDFLAGS llvm-config</li>
+              <li>Create module;</li>
+              <li>Add code;</li>
+              <li>Add basic blocks;</li>
+              <li>Append basic block to program in memory;</li>
+              <li>Write bitcode to object file or BC file on HDD or SSD.</li>
+            </ol>
+
             <h2>External links</h2>
             <ul>
               <li><a href="https://dlang.org/">D Programming Language</a></li>
@@ -227,5 +262,6 @@
     <script>
       $(document).foundation();
     </script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>
