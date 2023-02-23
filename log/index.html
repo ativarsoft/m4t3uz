@@ -164,6 +164,38 @@
               Similarly, Ada libraries contain only Ada code.
               In fact, <code>.a</code> libraries can be linked just like <code>.o</code> object files, which in turn map to a source file written in a specific language.
             </p>
+            <h2>Coding style</h2>
+            <p>
+              The major source of securities is <b>pointers</b>.
+            </p>
+            <ul>
+              <li>Without pointers, there is no null dereference.</li>
+              <li>Without pointers, there is no pointer arithmetic.</li>
+              <li>Without pointer arithmetic, there is no array out of bounds.</li>
+            </ul>
+            <p>
+              Traditionally, C source is divided into <code>.c</code> and <code>.h</code>.
+              The C source contain no pointes. The header files contain macros that use pointers.
+            </p>
+            <p>
+              Headers can be used to define <code>typedef</code>s for the <code>.c</code> files to use.
+              Similarly to variable declarations, the new identifier is on the right hand side of the typedef.
+              The following declares a pointer to a my_struct record as my_struct_t.
+              Traditionally, <code>_t</code> means "type" and is used to defferentiate
+              the type identifiers from variable and parameter identifiers.
+            </p>
+            <pre><code class="language-c">/* typedef <existing_name> <alias_name>; */
+struct my_struct {
+    int my_field;
+};
+
+typedef struct my_struct *my_struct_t;
+            </code></pre>
+            <p>Or simply...</p>
+            <pre><code class="language-c">typedef struct my_struct {
+    int my_field;
+} *my_struct_t;
+            </code></pre>
             <h2>Virtual address spaces</h2>
             <p>
               <a href="https://en.m.wikipedia.org/wiki/Virtual_address_space">
