@@ -166,7 +166,7 @@
             </p>
             <h2>Coding style</h2>
             <p>
-              The major source of securities is <b>pointers</b>.
+              The major source of security vulnerabilities is <b>pointers</b>.
             </p>
             <ul>
               <li>Without pointers, there is no null dereference.</li>
@@ -175,7 +175,7 @@
             </ul>
             <p>
               Traditionally, C source is divided into <code>.c</code> and <code>.h</code>.
-              The C source contain no pointes. The header files contain macros that use pointers.
+              The C source contain no pointers. The header files contain macros that use pointers.
             </p>
             <p>
               Headers can be used to define <code>typedef</code>s for the <code>.c</code> files to use.
@@ -184,7 +184,7 @@
               Traditionally, <code>_t</code> means "type" and is used to defferentiate
               the type identifiers from variable and parameter identifiers.
             </p>
-            <pre><code class="language-c">/* typedef <existing_name> <alias_name>; */
+            <pre><code class="language-c">/* typedef &lt;existing_name&gt; &lt;alias_name&gt;; */
 struct my_struct {
     int my_field;
 };
