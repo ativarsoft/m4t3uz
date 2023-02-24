@@ -190,13 +190,17 @@ struct my_struct {
     int my_field;
 };
 
-typedef struct my_struct *my_struct_t;
-            </code></pre>
+typedef struct my_struct *my_struct_t;</code></pre>
             <p>Or simply...</p>
             <pre><code class="language-c">typedef struct my_struct {
     int my_field;
-} *my_struct_t;
-            </code></pre>
+} *my_struct_t;</code></pre>
+            <p>The amp symbol as well as the asterisk symbols are forbidden on source files.</p>
+            <p>
+               Allocate new objects on the heap using memory pools.
+               A good implementation of memory pools is provided by the Apache APR library.
+               The API may be taken as a reference of how to implement memory pools.
+            </p>
             <h2>Virtual address spaces</h2>
             <p>
               <a href="https://en.m.wikipedia.org/wiki/Virtual_address_space">
