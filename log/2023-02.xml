@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="log.xsl?v=1.01"?>
+<log>	
+	<post>
+		<body>
+Today I will be making modifications to the code generation
+framework. The JIT framework is supposed to load the codegen
+plugin specified on the configuration file.
+		</body>
+		<author>Mateus</author>
+		<datetime>2023-02-24 11:12 AM</datetime>
+		<categories>
+			<tag>Pollen</tag>
+			<tag>JIT</tag>
+		</categories>
+	</post>
+</log>
