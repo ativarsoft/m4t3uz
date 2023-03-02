@@ -117,7 +117,7 @@
               This book is about Pollen programming language - a modern programming language designed to be a <strong>safe portable assembler</strong>.
               The C language was created to be a simple language that works like
               an assembly language that is portable between different machine architectures and operating systems.
-              Pollen tryies to be like C in the aspect of being portable and having constructs that can be easily and intuitively
+              Pollen tries to be like C in the aspect of being portable and having constructs that can be easily and intuitively
               mapped to machine instructions and data.
             </p>
           </div>
@@ -197,10 +197,16 @@ struct my_struct {
 };
 
 typedef struct my_struct *my_struct_t;</code></pre>
+
+            <br/>
+
             <p>Or simply...</p>
             <pre><code class="language-c">typedef struct my_struct {
     int my_field;
 } *my_struct_t;</code></pre>
+
+            <br/>
+
             <p>The amp symbol as well as the asterisk symbols are forbidden on source files.</p>
             <p>
                Allocate new objects on the heap using memory pools.
@@ -302,7 +308,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
               say they are compiler-specific custom code.
             </p>
 
-            <h3>Frestanding Ada code</h3>
+            <h3>Freestanding Ada code</h3>
             <p>
               Creating freestanding Ada code for being used as an operating system
               or as the main code on a microcontroller is considerably more complicated
@@ -362,6 +368,8 @@ typedef struct my_struct *my_struct_t;</code></pre>
 <pre><code class="language-ada">function "+" (Left, Right : Integer) return Integer;
 pragma Import (C, "+", "my_overflow_checking_function");</code></pre>
 
+            <br/>
+
             <p>
               The Ada language provide no types. They are all defined by the runtime
               and the overflow checking is usually specified as a compiler intrinsic
@@ -369,6 +377,8 @@ pragma Import (C, "+", "my_overflow_checking_function");</code></pre>
             </p>
 
 <pre><code class="language-ada">pragma Import (Intrinsic, "+");</code></pre>
+
+            <br/>
 
             <h4>Global allocator</h4>
             <p>
@@ -403,6 +413,8 @@ package System.Storage_Pools is
 private
    ... -- not specified by the language
 end System.Storage_Pools;</code></pre>
+
+            <br/>
 
             <h2>Development roadmap</h2>
             <p>
@@ -441,6 +453,8 @@ end System.Storage_Pools;</code></pre>
 <pre><code class="language-make">LLVM_CFLAGS=$(shell llvm-config --cflags)
 LLVM_LDFLAGS=$(shell llvm-config --ldflags --libs)
 </code></pre>
+
+            <br/>
 
             <ol>
               <li>Create a new Pollen plug-in</li>
