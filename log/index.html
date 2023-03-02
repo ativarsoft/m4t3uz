@@ -291,6 +291,53 @@ typedef struct my_struct *my_struct_t;</code></pre>
               specific hardware or operating system. All of those features are defined
               on the Ada language specification standard.
             </p>
+            
+            <h4>Integer overflow checking</h4>
+            <p>
+              Overflow checking is done by the Ada runtime by using operator overloading
+              as in object oriented code.
+            </p>
+<pre><code class="language-ada">function "+" (Left, Right : Integer) return Integer;
+pragma Import (C, "+", "my_overflow_checking_function");</code></pre>
+            <p>
+              The Ada language provide no types. They are all defined by the runtime
+              and the overflow checking is usually specified as a compiler intrinsic
+              with:
+            </p>
+<pre><code class="language-ada">pragma Import("+", Intrinsic);</code></pre>
+            <h4>Global allocator</h4>
+            <p>
+              The global allocator made by the the definition of the
+              <code>Root_Storage_Pool</code> type and its method, also as in object
+              oriented code.
+            </p>
+<pre><code class="language-ada">with Ada.Finalization;
+with System.Storage_Elements;
+package System.Storage_Pools is
+    pragma Preelaborate(System.Storage_Pools);
+6/2
+{AI95-00161-01}     type Root_Storage_Pool is
+        abstract new Ada.Finalization.Limited_Controlled with private;
+    pragma Preelaborable_Initialization(Root_Storage_Pool);
+7
+    procedure Allocate(
+      Pool : in out Root_Storage_Pool;
+      Storage_Address : out Address;
+      Size_In_Storage_Elements : in Storage_Elements.Storage_Count;
+      Alignment : in Storage_Elements.Storage_Count) is abstract;
+8
+    procedure Deallocate(
+      Pool : in out Root_Storage_Pool;
+      Storage_Address : in Address;
+      Size_In_Storage_Elements : in Storage_Elements.Storage_Count;
+      Alignment : in Storage_Elements.Storage_Count) is abstract;
+9
+    function Storage_Size(Pool : Root_Storage_Pool)
+        return Storage_Elements.Storage_Count is abstract;
+10
+private
+   ... -- not specified by the language
+end System.Storage_Pools;</code></pre>
 
             <h2>Development roadmap</h2>
             <p>
