@@ -224,6 +224,38 @@ typedef struct my_struct *my_struct_t;</code></pre>
               The part of the server that deals with such type of data should be handled by a carefully verified framework written in a secure language, and the parts which contain code written in an older programming language should be in worker processes which are forked or executed.
             </p>
 
+            <h2>Ada</h2>
+            <p>
+              Ada is a programming language focused on memory safety and also in overall program correctness.
+              There is the SPARK subset (not the obsolete SPARC architecture) which proves mathematically that
+              a given program has no flaws.
+            </p>
+            <p>
+              The Ariane rocket made by the American government was written in
+              Ada/SPARK exploded due to a software flaw. This issue aways comes
+              up when discussing the validity of Ada as a very safe language, but
+              in fact the software flaw was present because a pragma was used.
+              The actual source code snippet containing the section of the rocket
+              that caused the explosion is available to the public by Nasa and
+              can be found online still in these days, way in the future after
+              the explosion was in the news. Maybe it is still a tabu because
+              it is the only aledged "proof" that Ada actually has flaws.
+            </p>
+            <p>
+              As I mentioned, it was caused by the incorrect use of a pragma
+              that makes false asumptions of the hardware system of the rocked
+              because it was ported from a previous rocket with a completely
+              different hardware.
+            </p>
+            <p>
+              Besided, <code>pragma</code>s in Ada are compiler specific and are not
+              part of the language. The language does not give the same security
+              guarantees about <code>pragma</code>s because, as I stated before,
+              most <code>pragma</code>s are not defined on the standard. The
+              Ada standard specifications define the keyword "pragma" but they
+              say they are compiler-specific custom code.
+            </p>
+
             <h2>Development roadmap</h2>
             <p>
               The following is my future development:
@@ -232,6 +264,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
               <li>Convert Quick to a series daemons</li>
               <li>Remove autotools from Quick</li>
               <li>Merge Quick with Templatizer</li>
+              <li>Add Ada code to the leaf-d operating system</li>
             </ol>
 
             <h2>JIT</h2>
