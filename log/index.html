@@ -256,6 +256,42 @@ typedef struct my_struct *my_struct_t;</code></pre>
               say they are compiler-specific custom code.
             </p>
 
+            <h3>Frestanding Ada code</h3>
+            <p>
+              Creating freestanding Ada code for being used as an operating system
+              or as the main code on a microcontroller is considerably more complicated
+              than creating freestanding code in C.
+            </p>
+            <p>
+              Creating freestanding Ada code is more difficult because Ada requires
+              a runtime to compile and to run. But the important part to understand
+              is that the Pollen should follow the example of having all the
+              runtime code required for a language to run on bare metal as
+              freestanding code is that everything about the runtime must be covered
+              on the standard and publicly available documentation so that kernel
+              developers can effectively use the language.
+            </p>
+            <p>
+              The Ada runtime is written in Ada itself and calls C code using the
+              <code>pragma Import</code> directive to run code that depend on
+              unsafe features not provided by the language, such as:
+            </p>
+            <ul>
+              <li>pointers and pointer arithmetic;</li>
+              <li>exception handling;</li>
+              <li>tasking;</li>
+              <li>delays;</li>
+              <li>array bounds checking;</li>
+              <li>and others.</li>
+            </li>
+            <p>
+              Those are all portable across compilers, operating systems and hardware.
+              The hardware on which the Ada code runs do not necessarely have to provide
+              all of those features therefore not every feature must be present on a
+              specific hardware or operating system. All of those features are defined
+              on the Ada language specification standard.
+            </p>
+
             <h2>Development roadmap</h2>
             <p>
               The following is my future development:
