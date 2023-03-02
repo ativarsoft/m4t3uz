@@ -297,14 +297,18 @@ typedef struct my_struct *my_struct_t;</code></pre>
               Overflow checking is done by the Ada runtime by using operator overloading
               as in object oriented code.
             </p>
+
 <pre><code class="language-ada">function "+" (Left, Right : Integer) return Integer;
 pragma Import (C, "+", "my_overflow_checking_function");</code></pre>
+
             <p>
               The Ada language provide no types. They are all defined by the runtime
               and the overflow checking is usually specified as a compiler intrinsic
               with:
             </p>
-<pre><code class="language-ada">pragma Import("+", Intrinsic);</code></pre>
+
+<pre><code class="language-ada">pragma Import (Intrinsic, "+");</code></pre>
+
             <h4>Global allocator</h4>
             <p>
               The global allocator made by the the definition of the
