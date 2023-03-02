@@ -171,7 +171,7 @@
               Similarly, Ada libraries contain only Ada code.
               In fact, <code>.a</code> libraries can be linked just like <code>.o</code> object files, which in turn map to a source file written in a specific language.
             </p>
-            <h2>Coding style</h2>
+            <h2>The C Programming Language</h2>
             <p>
               The major source of security vulnerabilities is <b>pointers</b>.
             </p>
@@ -207,12 +207,58 @@ typedef struct my_struct *my_struct_t;</code></pre>
                A good implementation of memory pools is provided by the Apache APR library.
                The API may be taken as a reference of how to implement memory pools.
             </p>
+            <h3>Object orientation</h3>
+            <p>
+              The concept of object orientation that was developed for the C++
+              programming language is also available for the C programming language.
+              That can be done by using macros for getters and setters.
+            </p>
+            <p>
+              Getters and setters check for null dereferences before they are used on an
+              expression. The GLib runtime libraries from the GNOME project is written in C
+              and uses this strategy to avoid memory errors. Keeping that library secure
+              is essential because the GLib runtime libraries are used on all GNOME projects.
+              An example of object orientation in C using macro follows:
+            </p>
+            <pre><code class="language-c">#define NEW_CODEGEN_PLUGIN(ctx)                          \
+    (tmpl_codegen_t) templatizer_malloc(ctx, sizeof(struct pollen_codegen_plugin));
+
+#define CODEGEN_SET_CONTEXT(codegen, x)                           \
+    ((codegen != NULL)? (codegen-&gt;ctx = x) : (abort(), NULL))
+
+#define CODEGEN_GET_CONTEXT(codegen)                              \
+    ((codegen != NULL)? (codegen-&gt;ctx) : (abort(), NULL))
+
+#define CODEGEN_SET_LIBRARY(codegen, lib)                         \
+    ((codegen != NULL)? (codegen-&gt;library = lib) : (abort(), NULL))
+
+/* Macro to get the library handle from the plugin context */
+#define CODEGEN_GET_LIBRARY(codegen)                              \
+    ((codegen != NULL)? (codegen-&gt;library) : (abort(), NULL))</code></pre>
+    
+            <br/>
+    
+            <p>
+              Functions that make use of unknown types should also use macros
+              for performing casts.
+            </p>
+            
+            <pre><code class="language-c">/* Macro to call a function with no arguments */
+#define POLLEN_CALL_SYMBOL_0(symbol, rc)                   \
+    do {                                                   \
+        int (*fn_ptr)() = (int (*)()) symbol;              \
+        rc = fn_ptr();                                     \
+    } while(0);
+
+#define NEW_CODEGEN_PLUGIN(ctx)                          \
+    (tmpl_codegen_t) templatizer_malloc(ctx, sizeof(struct pollen_codegen_plugin));</code></pre>
+
             <h2>Virtual address spaces</h2>
             <p>
               <a href="https://en.m.wikipedia.org/wiki/Virtual_address_space">
                 Virtual addressing
               </a>
-              can be used in addition to safe programming languages.
+              can be used in addition to secure programming languages.
               That allows the developer to include legacy code written in older programming languages.
             </p>
             <p>
@@ -224,7 +270,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
               The part of the server that deals with such type of data should be handled by a carefully verified framework written in a secure language, and the parts which contain code written in an older programming language should be in worker processes which are forked or executed.
             </p>
 
-            <h2>Ada</h2>
+            <h2>The Ada Programming Language</h2>
             <p>
               Ada is a programming language focused on memory safety and also in overall program correctness.
               There is the SPARK subset (not the obsolete SPARC architecture) which proves mathematically that
