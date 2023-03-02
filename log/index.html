@@ -243,6 +243,13 @@ typedef struct my_struct *my_struct_t;</code></pre>
     ((codegen != NULL)? (codegen-&gt;library) : (abort(), NULL))</code></pre>
     
             <br/>
+            
+            <p>
+              In the above code, the comma after the call to the <code class="language-c">abort()</code>
+              function allows for returning <code class="language-c">NULL</code> as the result of the
+              sub-expression <code class="language-c">(abort(), NULL)</code> to the
+              parent expression which is <code>...? ... : ...</code>.
+            </p>
     
             <p>
               Functions that make use of unknown types should also use macros
