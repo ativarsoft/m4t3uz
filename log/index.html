@@ -499,6 +499,21 @@ gcc -c main.c
 gcc -o myprogram main.o mypackage.o -L. -lada</code></pre>
 
             <br/>
+            
+            <p>
+              Remember to set the encoding of the standard input and
+              standard output to UTF-8 before reading or writing any
+              text.
+            </p>
+
+            <pre><code class="language-ada">with Ada.Text_IO;
+
+procedure Main is
+begin
+   Ada.Text_IO.Set_Encoding (Ada.Text_IO.Input, "UTF-8");
+   Ada.Text_IO.Set_Encoding (Ada.Text_IO.Output, "UTF-8");
+   Ada.Text_IO.Put_Line ("Input and output are now encoded in UTF-8.");
+end Main;</code></pre>
 
             <h2>Development roadmap</h2>
             <p>
