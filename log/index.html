@@ -105,7 +105,6 @@
           <div class="cell">
             <p>
               Pollen is a programming language that I'm creating and will be relased soon.
-              It is similar to Templatizer on the syntax and modularity.
             </p>
           </div>
         </div>
@@ -127,10 +126,10 @@
           <div class="cell">
             <h2>Introduction</h2>
             <p>
-              <b>Pollen</b> is based on a previous programming language written by myself that was codenamed <i>Templatizer</i>.
-              Templatizer was designed to be a web template language.
+              <b>Pollen</b> is based on a previous programming language written by myself that was codenamed <i>webutils</i>.
+              webutils was designed to be a web template language.
               It didn't gain much attention because there are many web template languages out there
-              and "templatizer" was already a generic name for many web template languages out there on the internet.
+              and "webutils" was already a generic name for many web template languages out there on the internet.
             </p>
             <p>
               Currently, there is only an interpreter for Pollen, but other code generation libraries will be supported soon.
@@ -227,7 +226,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
               An example of object orientation in C using macro follows:
             </p>
             <pre><code class="language-c">#define NEW_CODEGEN_PLUGIN(ctx)                          \
-    (tmpl_codegen_t) templatizer_malloc(ctx, sizeof(struct pollen_codegen_plugin));
+    (tmpl_codegen_t) pollen_malloc(ctx, sizeof(struct pollen_codegen_plugin));
 
 #define CODEGEN_SET_CONTEXT(codegen, x)                           \
     ((codegen != NULL)? (codegen-&gt;ctx = x) : (abort(), NULL))
@@ -550,8 +549,9 @@ use Interfaces.C;
 with Interfaces.C.Strings;
 use Interfaces.C.Strings;
 
-package body Templatizer.Strings is
-   ...
+package body Pollen.Strings is
+
+   --  ...
 
    function Value (Input : chars_ptr)
       return Wide_String
@@ -569,8 +569,9 @@ package body Templatizer.Strings is
       return Output;
    end Value;
 
-   ...
-end Templatizer;</code></pre>
+   --  ...
+
+end Pollen.Strings;</code></pre>
 
             <br/>
 
