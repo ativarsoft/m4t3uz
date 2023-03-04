@@ -278,11 +278,20 @@ typedef struct my_struct *my_struct_t;</code></pre>
             </p>
             <p>
               Only the root user can run programs which will run as a different user (except for setuid).
-              Daemons can fork its process in order to have a process running under an unprivileged user in order to insulate each API request from each other.
+              Daemons can fork its process in order to have a process running
+              under an unprivileged user in order to insulate each API request
+              from each other.
             </p>
             <p>
-              Therefore the only major concern is the part of the programs that parse the request input (such as JSON or XML) which contain the authentication data of the request and the socket connection itself.
-              The part of the server that deals with such type of data should be handled by a carefully verified framework written in a secure language, and the parts which contain code written in an older programming language should be in worker processes which are forked or executed.
+              Therefore the only major concern is the part of the programs that
+              parse the request input (such as JSON or XML) which contain the
+              authentication data of the request and the socket connection
+              itself.
+              The part of the server that deals with such type of data should
+              be handled by a carefully verified framework written in a secure
+              language, and the parts which contain code written in an older
+              programming language should be in worker processes which are
+              forked or executed.
             </p>
 
             <h2>The Ada Programming Language</h2>
@@ -309,12 +318,39 @@ typedef struct my_struct *my_struct_t;</code></pre>
               different hardware.
             </p>
             <p>
-              Besided, <code>pragma</code>s in Ada are compiler specific and are not
+              Besides, <code>pragma</code>s in Ada are compiler specific and are not
               part of the language. The language does not give the same security
               guarantees about <code>pragma</code>s because, as I stated before,
               most <code>pragma</code>s are not defined on the standard. The
               Ada standard specifications define the keyword "pragma" but they
               say they are compiler-specific custom code.
+            </p>
+            <p>
+              Programs written in Ada usually need an aditional runtime with
+              its own types and functions. That runtime may have a part
+              written in Ada (a binding) and a lower level part written in
+              another language such as C.
+            </p>
+            <p>
+              That is exactly where Pollen comes into play. Pollen can be used
+              as a runtime for Ada for accessing modern operating system
+              features, external libraries or other functionality that is not
+              covered by the Ada runtime.
+            </p>
+            <p>
+              Here are some good examples of functionality not covered by the
+              Ada runtime:
+            </p>
+            <ul>
+              <li>UTF-8;</li>
+              <li>Memory streams;</li>
+              <li>Database support;</li>
+              <li>Modern compression algorithms;</li>
+              <li>Modern cryptography algorithms;</li>
+              <li>Networking (Berkeley sockets).</li>
+            </ul>
+            <p>
+              Pollen brings all those features to Ada if used as a runtime.
             </p>
 
             <h3>Freestanding Ada code</h3>
