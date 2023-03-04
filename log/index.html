@@ -501,19 +501,40 @@ gcc -o myprogram main.o mypackage.o -L. -lada</code></pre>
             <br/>
             
             <p>
-              Remember to set the encoding of the standard input and
-              standard output to UTF-8 before reading or writing any
-              text.
+              The Ada standard library handles Unicode using wide characters.
+              The package <code>Interfaces.C.Strings</code> does not support
+              UTF-8 or wide character encoding. It is wise to include
+              character transcoding functions on the C side instead of the
+              Ada side. Those functions should convert Unicode strings to
+              Ada <code>Wide_String</code> and similars.
             </p>
 
-            <pre><code class="language-ada">with Ada.Text_IO;
+            <pre><code class="language-ada">with Interfaces.C;
+use Interfaces.C;
+with Interfaces.C.Strings;
+use Interfaces.C.Strings;
 
-procedure Main is
-begin
-   Ada.Text_IO.Set_Encoding (Ada.Text_IO.Input, "UTF-8");
-   Ada.Text_IO.Set_Encoding (Ada.Text_IO.Output, "UTF-8");
-   Ada.Text_IO.Put_Line ("Input and output are now encoded in UTF-8.");
-end Main;</code></pre>
+package body Templatizer.Strings is
+   ...
+
+   function Value (Input : chars_ptr)
+      return Wide_String
+   is
+      function To_Ada_Encoding (Input : chars_ptr; Output : Wide_String) return int;
+      pragma Import (C, To_Ada_Encoding, "tmpl_to_ada_encoding");
+
+      Output : Wide_String (1 .. Strlen (Input));
+      Return_Code : int;
+   begin
+      Return_code := To_Ada_Encoding (Input, Output);
+      if Return_Code /= 0 then
+         throw Program_Error with "Unable to convert C string to Pollen string.";
+      endif;
+      return Output;
+   end Value;
+
+   ...
+end Templatizer;</code></pre>
 
             <br/>
 
