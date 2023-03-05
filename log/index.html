@@ -17,20 +17,17 @@
   </head>
   <body>
 
-    <!-- logo and ad break -->
-    <br>
-
-    <article class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="medium-4 cell">
-          <img src="../ativarsoft.png" alt="Ativarsoft">
-        </div>
-        <div class="medium-8 cell">
-          <img src="https://placehold.it/900x175&text=Advertisement" alt="advertisement">
-        </div>
+    <div class="title-bar">
+      <div class="title-bar-left">
+        <img src="https://ativarsoft.com/ativarsoft.png" alt="Ativarsoft" style="height: 4em">
       </div>
-    </article>
-    <!-- / logo and ad break -->
+      <div class="title-bar-title">
+        <img src="https://pollen-lang.org/pollen-social-card.svg" alt="Pollen" style="height: 4em;">
+      </div>
+      <div class="title-bar-right">
+        <button class="menu-icon" type="button" data-open="book-canvas-menu"></button>
+      </div>
+    </div>
     
     <br>
 
@@ -94,12 +91,20 @@
     </article>
 
     <div class="off-canvas-wrapper">
-      <div id="book-canvas-menu" class="off-canvas position-left" id="offCanvas" data-off-canvas>
+      <div id="book-canvas-menu" class="off-canvas position-left" id="offCanvas" data-off-canvas data-content-id="book-canvas-content" data-nested="true">
         <button class="close-button" aria-label="Close menu" type="button" data-close>
           <span aria-hidden="true">&times;</span>
         </button>
         <ul class="mobile-ofc vertical menu">
-          <li>><a href="#pollen-book">Pollen</a></li>
+          <li>
+            <a href="#pollen-book"><img src="https://pollen-lang.org/pollen.svg" style="height: 2em;"/> Pollen: creating a secure portable assembler</a>
+          </li>
+          <li>
+            <ol>
+              <li><a href="#pollen-about">About this book</a></li>
+              <li><a href="#pollen-intro">Introduction</a></li>
+            </ol>
+          </li>
         </ul>
       </div>
 
@@ -121,7 +126,7 @@
           </div>
         </div>
         
-        <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="grid-x grid-margin-x grid-margin-y" id="pollen-about">
           <div class="cell">
             <h2>About this book</h2>
             <p>
@@ -134,7 +139,7 @@
           </div>
         </div>
 
-        <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="grid-x grid-margin-x grid-margin-y" id="pollen-intro">
           <div class="cell">
             <h2>Introduction</h2>
             <p>
@@ -743,7 +748,7 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git<
     <script src="../foundation/6.7.5/js/vendor/foundation.min.js"></script>
     <script>
       $(document).foundation();
-      $('#book-canvas-menu').foundation('reveal', true);
+      ///$('#book-canvas-menu').foundation('open', true);
     </script>
     <script>hljs.highlightAll();</script>
   </body>
