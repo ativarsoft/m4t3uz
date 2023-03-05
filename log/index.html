@@ -666,6 +666,27 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git<
               <cite><a href="https://cloud.google.com/run/">Google Run Website</a> (access 2023-03-04)</cite>
             </blockquote>
 
+            <h2>Pollen</h2>
+            <p>
+              The libpollen runtime has a function called <code>hello world</code>.
+              This function is supposed to be called from the tmpl script file.
+              The libpollen runtime is optional and is not required for a program
+              written in Pollen to run.
+            </p>
+            <p>
+              The compiler and the interpreter get the symbol for the "hello_world"
+              function in different ways.
+            </p>
+            <p>
+              The interpreter gets the symbol using dlopen on the runtime library
+              selected by the script. The select script is the "lib" atrribute on the
+              "pollen" element.
+            </p>
+            <p>
+              The compiler gets the symbol by using the linker as the object file
+              created created from the script is linked against libpollen.
+            </p>
+
             <h2>External links</h2>
             <ul>
               <li><a href="https://pollen-lang.org/">Pollen Programming Language</a></li>
