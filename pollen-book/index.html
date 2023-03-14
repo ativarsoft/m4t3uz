@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pollen book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../foundation/6.7.5/css/foundation.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/css/foundation-prototype.min.css"> -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+    <!-- optional CDN for Foundation Icons ^^ -->
+
+    <link rel="stylesheet"
+          href="../highlight/styles/default.min.css">
+    <script src="../highlight/highlight.min.js"></script>
+  </head>
+  <body>
+
+    <div class="title-bar">
+      <div class="title-bar-left">
+        <img src="https://ativarsoft.com/ativarsoft.png" alt="Ativarsoft" style="height: 4em">
+      </div>
+      <div class="title-bar-title">
+        <img src="https://pollen-lang.org/pollen-social-card.svg" alt="Pollen" style="height: 4em;">
+      </div>
+      <div class="title-bar-right">
+        <button class="menu-icon" type="button" data-open="book-canvas-menu"></button>
+      </div>
+    </div>
+    
+    <br>
+
+    <article class="grid-container">
+
+    <div class="off-canvas-wrapper">
+      <div id="book-canvas-menu" class="off-canvas position-left" id="offCanvas" data-off-canvas data-content-id="book-canvas-content" data-nested="true">
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <ul class="mobile-ofc vertical menu">
+          <li>
+            <a href="#pollen-book"><img src="https://pollen-lang.org/pollen.svg" style="height: 2em;"/> Pollen: creating a secure portable assembler</a>
+          </li>
+          <li>
+            <ol>
+              <li><a href="#pollen-about">About this book</a></li>
+              <li><a href="#pollen-intro">Introduction</a></li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+
+      <div id="book-canvas-content" class="off-canvas-content" data-off-canvas-content>
+      <article id="pollen-book" class="grid-container">
+
+        <div class="grid-x grid-margin-x grid-margin-y">
+          <div class="cell">
+            <h1>Pollen: creating a secure portable assembler</h1>
+            <h3>Mateus de Lima Oliveira</h3>
+          </div>
+        </div>
+
+        <div class="grid-x grid-margin-x grid-margin-y">
+          <div class="cell">
+            <p>
+              Pollen is a programming language that I'm creating and will be relased soon.
+            </p>
+          </div>
+        </div>
+        
+        <div class="grid-x grid-margin-x grid-margin-y" id="pollen-about">
+          <div class="cell">
+            <h2>About this book</h2>
+            <p>
+              This book is about Pollen programming language - a modern programming language designed to be a <strong>safe portable assembler</strong>.
+              The C language was created to be a simple language that works like
+              an assembly language that is portable between different machine architectures and operating systems.
+              Pollen tries to be like C in the aspect of being portable and having constructs that can be easily and intuitively
+              mapped to machine instructions and data.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-x grid-margin-x grid-margin-y" id="pollen-intro">
+          <div class="cell">
+            <h2>Introduction</h2>
+            <p>
+              <b>Pollen</b> is based on a previous programming language written by myself that was codenamed <i>webutils</i>.
+              webutils was designed to be a web template language.
+              It didn't gain much attention because there are many web template languages out there
+              and "webutils" was already a generic name for many web template languages out there on the internet.
+            </p>
+            <p>
+              Currently, there is only an interpreter for Pollen, but other code generation libraries will be supported soon.
+              Multiple code generation libraries are intended to be supported by using an abstraction layer for them.
+              This creates a slight and most of the times negligible performance penality, but makes the language
+              portable across different platforms and operating systems, including embedded systems.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-x grid-margin-x">
+          <div class="cell">
+            <h2>Operating system development in modern languages and static libraries</h2>
+            <p>
+              It is difficult, in my opinion, to write C programs that include multiple static libraries in them in modern programming languages.
+              Modern programming languages usually include a runtime library. Rust, D and Ada all include a runtime.
+            </p>
+            <p>
+              The Rust runtime is very minimal but it is required because it includes definitions for basic integer types, vectors and others. The <code>no_std</code> macro leaves only operating system independent code that do not depend on allocations.
+            </p>
+            <p>
+              That is analogous to <a href="https://dlang.org/spec/betterc.html">betterC</a> in D. betterC removes the runtime library entirely. There is no GC, TypeInfo, or allocations.
+            </p>
+            <ul>
+              <li>
+                Rust does not require runtime initialization when Rust libraries are linked statically.
+              </li>
+              <li>
+                Ada requires a runtime initialization by calling <a href="https://gcc.gnu.org/onlinedocs/gcc-3.4.6/gnat_ugn_unw/Binding-with-Non_002dAda-Main-Programs.html">adainit and adafinal</a>.
+              </li>
+              <li>
+                D also requires runtime initialization when not in <a href="https://dlang.org/spec/betterc.html">betterC</a> mode for initializing the GC and other globals as well as calling some operating system functions for setting state such as pthreads.
+              </li>
+            </ul>
+            <p>
+              In previous versions, <code>cargo init</code> created libraries by default instead of binaries.
+              Those modules contained Rust-only code which were linked to static or dynamic libraries written in C, including the C standard library or any operating system library.
+              Similarly, Ada libraries contain only Ada code.
+              In fact, <code>.a</code> libraries can be linked just like <code>.o</code> object files, which in turn map to a source file written in a specific language.
+            </p>
+            <h2>The C Programming Language</h2>
+            <p>
+              The major source of security vulnerabilities is <b>pointers</b>.
+            </p>
+            <ul>
+              <li>Without pointers, there is no null dereference.</li>
+              <li>Without pointers, there is no pointer arithmetic.</li>
+              <li>Without pointer arithmetic, there is no array out of bounds.</li>
+            </ul>
+            <p>
+              Traditionally, C source is divided into <code>.c</code> and <code>.h</code>.
+              The C source contain no pointers. The header files contain macros that use pointers.
+            </p>
+            <p>
+              Headers can be used to define <code>typedef</code>s for the <code>.c</code> files to use.
+              Similarly to variable declarations, the new identifier is on the right hand side of the typedef.
+              The following declares a pointer to a my_struct record as my_struct_t.
+              Traditionally, <code>_t</code> means "type" and is used to defferentiate
+              the type identifiers from variable and parameter identifiers.
+            </p>
+            <pre><code class="language-c">/* typedef &lt;existing_name&gt; &lt;alias_name&gt;; */
+struct my_struct {
+    int my_field;
+};
+
+typedef struct my_struct *my_struct_t;</code></pre>
+
+            <br/>
+
+            <p>Or simply...</p>
+            <pre><code class="language-c">typedef struct my_struct {
+    int my_field;
+} *my_struct_t;</code></pre>
+
+            <br/>
+
+            <p>The amp symbol as well as the asterisk symbols are forbidden on source files.</p>
+            <p>
+               Allocate new objects on the heap using memory pools.
+               A good implementation of memory pools is provided by the Apache APR library.
+               The API may be taken as a reference of how to implement memory pools.
+            </p>
+            <h3>Object orientation</h3>
+            <p>
+              The concept of object orientation that was developed for the C++
+              programming language is also available for the C programming language.
+              That can be done by using macros for getters and setters.
+            </p>
+            <p>
+              Getters and setters check for null dereferences before they are used on an
+              expression. The GLib runtime libraries from the GNOME project is written in C
+              and uses this strategy to avoid memory errors. Keeping that library secure
+              is essential because the GLib runtime libraries are used on all GNOME projects.
+              An example of object orientation in C using macro follows:
+            </p>
+            <pre><code class="language-c">#define NEW_CODEGEN_PLUGIN(ctx)                          \
+    (tmpl_codegen_t) pollen_malloc(ctx, sizeof(struct pollen_codegen_plugin));
+
+#define CODEGEN_SET_CONTEXT(codegen, x)                           \
+    ((codegen != NULL)? (codegen-&gt;ctx = x) : (abort(), NULL))
+
+#define CODEGEN_GET_CONTEXT(codegen)                              \
+    ((codegen != NULL)? (codegen-&gt;ctx) : (abort(), NULL))
+
+#define CODEGEN_SET_LIBRARY(codegen, lib)                         \
+    ((codegen != NULL)? (codegen-&gt;library = lib) : (abort(), NULL))
+
+/* Macro to get the library handle from the plugin context */
+#define CODEGEN_GET_LIBRARY(codegen)                              \
+    ((codegen != NULL)? (codegen-&gt;library) : (abort(), NULL))</code></pre>
+    
+            <br/>
+            
+            <p>
+              In the above code, the comma after the call to the <code class="language-c">abort()</code>
+              function allows for returning <code class="language-c">NULL</code> as the result of the
+              sub-expression <code class="language-c">(abort(), NULL)</code> to the
+              parent expression which is <code>...? ... : ...</code>. The abort function returns void.
+            </p>
+    
+            <p>
+              Functions that make use of unknown types should also use macros
+              for performing casts.
+            </p>
+            
+            <pre><code class="language-c">/* Macro to call a function with no arguments */
+#define POLLEN_CALL_SYMBOL_0(symbol, rc)                   \
+    do {                                                   \
+        int (*fn_ptr)() = (int (*)()) symbol;              \
+        rc = fn_ptr();                                     \
+    } while(0);
+
+#define NEW_CODEGEN_PLUGIN(ctx)                          \
+    (tmpl_codegen_t) templatizer_malloc(ctx, sizeof(struct pollen_codegen_plugin));</code></pre>
+
+            <br/>
+
+            <h2>Virtual address spaces</h2>
+            <p>
+              <a href="https://en.m.wikipedia.org/wiki/Virtual_address_space">
+                Virtual addressing
+              </a>
+              can be used in addition to secure programming languages.
+              That allows the developer to include legacy code written in older programming languages.
+            </p>
+            <p>
+              Only the root user can run programs which will run as a different user (except for setuid).
+              Daemons can fork its process in order to have a process running
+              under an unprivileged user in order to insulate each API request
+              from each other.
+            </p>
+            <p>
+              Therefore the only major concern is the part of the programs that
+              parse the request input (such as JSON or XML) which contain the
+              authentication data of the request and the socket connection
+              itself.
+              The part of the server that deals with such type of data should
+              be handled by a carefully verified framework written in a secure
+              language, and the parts which contain code written in an older
+              programming language should be in worker processes which are
+              forked or executed.
+            </p>
+
+            <h2>The Ada Programming Language</h2>
+            <p>
+              Ada is a programming language focused on memory safety and also in overall program correctness.
+              There is the SPARK subset (not the obsolete SPARC architecture) which proves mathematically that
+              a given program has no flaws.
+            </p>
+            <p>
+              The Ariane rocket made by the American government was written in
+              Ada/SPARK exploded due to a software flaw. This issue aways comes
+              up when discussing the validity of Ada as a very safe language, but
+              in fact the software flaw was present because a pragma was used.
+              The actual source code snippet containing the section of the rocket
+              that caused the explosion is available to the public by Nasa and
+              can be found online still in these days, way in the future after
+              the explosion was in the news. Maybe it is still a tabu because
+              it is the only aledged "proof" that Ada actually has flaws.
+            </p>
+            <p>
+              As I mentioned, it was caused by the incorrect use of a pragma
+              that makes false asumptions of the hardware system of the rocked
+              because it was ported from a previous rocket with a completely
+              different hardware.
+            </p>
+            <p>
+              Besides, <code>pragma</code>s in Ada are compiler specific and are not
+              part of the language. The language does not give the same security
+              guarantees about <code>pragma</code>s because, as I stated before,
+              most <code>pragma</code>s are not defined on the standard. The
+              Ada standard specifications define the keyword "pragma" but they
+              say they are compiler-specific custom code.
+            </p>
+            <p>
+              Programs written in Ada usually need an aditional runtime with
+              its own types and functions. That runtime may have a part
+              written in Ada (a binding) and a lower level part written in
+              another language such as C.
+            </p>
+            <p>
+              That is exactly where Pollen comes into play. Pollen can be used
+              as a runtime for Ada for accessing modern operating system
+              features, external libraries or other functionality that is not
+              covered by the Ada runtime.
+            </p>
+            <p>
+              Here are some good examples of functionality not covered by the
+              Ada runtime:
+            </p>
+            <ul>
+              <li>UTF-8;</li>
+              <li>Memory streams;</li>
+              <li>Database support;</li>
+              <li>Modern compression algorithms;</li>
+              <li>Modern cryptography algorithms;</li>
+              <li>Networking (Berkeley sockets).</li>
+            </ul>
+            <p>
+              Pollen brings all those features to Ada if used as a runtime.
+            </p>
+
+            <h3>Freestanding Ada code</h3>
+            <p>
+              Creating freestanding Ada code for being used as an operating system
+              or as the main code on a microcontroller is considerably more complicated
+              than creating freestanding code in C.
+            </p>
+            <p>
+              Creating freestanding Ada code is more difficult because Ada requires
+              a runtime to compile and to run. But the important part to understand
+              is that the Pollen should follow the example of having all the
+              runtime code required for a language to run on bare metal as
+              freestanding code is that everything about the runtime must be covered
+              on the standard and publicly available documentation so that kernel
+              developers can effectively use the language.
+            </p>
+            <p>
+              The Ada runtime is written in Ada itself and calls C code using the
+              <code>pragma Import</code> directive to run code that depend on
+              unsafe features not provided by the language, such as:
+            </p>
+            <ul>
+              <li>pointers and pointer arithmetic;</li>
+              <li>exception handling;</li>
+              <li>tasking;</li>
+              <li>delays;</li>
+              <li>array bounds checking;</li>
+              <li>and others.</li>
+            </ul>
+            <p>
+              Those are all portable across compilers, operating systems and hardware.
+              The hardware on which the Ada code runs do not necessarely have to provide
+              all of those features therefore not every feature must be present on a
+              specific hardware or operating system. All of those features are defined
+              on the Ada language specification standard.
+            </p>
+            <p>
+              Ada code typically relies on code generated by the compiler
+              such as those for null checks on pointer dereferences. However
+              those operators - such as the dereference operator in this
+              instance - can be overriden manually.
+            </p>
+            <p>
+              Those automatically generated code do not generally pose danger
+              to a low level developer as they call the exception handler on
+              the <code>Ada.Exceptions</code> package. If a programmer wants
+              to support null checks on pointer dereferences and comparason
+              operators, all that is needed is to create the appropriate handlers
+              on that package on the Ada runtime of the kernel of the operating
+              system that is being created.
+            </p>
+
+            <h4>Integer overflow checking</h4>
+            <p>
+              Overflow checking is done by the Ada runtime by using operator overloading
+              as in object oriented code.
+            </p>
+
+<pre><code class="language-ada">function "+" (Left, Right : Integer) return Integer;
+pragma Import (C, "+", "my_overflow_checking_function");</code></pre>
+
+            <br/>
+
+            <p>
+              The Ada language provide no types. They are all defined by the runtime
+              and the overflow checking is usually specified as a compiler intrinsic
+              with:
+            </p>
+
+<pre><code class="language-ada">pragma Import (Intrinsic, "+");</code></pre>
+
+            <br/>
+
+            <h4>Global allocator</h4>
+            <p>
+              The global allocator made by the the definition of the
+              <code>Root_Storage_Pool</code> type and its methods, also as in object
+              oriented code.
+            </p>
+<pre><code class="language-ada">5
+with Ada.Finalization;
+with System.Storage_Elements;
+package System.Storage_Pools is
+    pragma Preelaborate(System.Storage_Pools);
+6/2
+{AI95-00161-01}     type Root_Storage_Pool is
+        abstract new Ada.Finalization.Limited_Controlled with private;
+    pragma Preelaborable_Initialization(Root_Storage_Pool);
+7
+    procedure Allocate(
+      Pool : in out Root_Storage_Pool;
+      Storage_Address : out Address;
+      Size_In_Storage_Elements : in Storage_Elements.Storage_Count;
+      Alignment : in Storage_Elements.Storage_Count) is abstract;
+8
+    procedure Deallocate(
+      Pool : in out Root_Storage_Pool;
+      Storage_Address : in Address;
+      Size_In_Storage_Elements : in Storage_Elements.Storage_Count;
+      Alignment : in Storage_Elements.Storage_Count) is abstract;
+9
+    function Storage_Size(Pool : Root_Storage_Pool)
+        return Storage_Elements.Storage_Count is abstract;
+10
+private
+   ... -- not specified by the language
+end System.Storage_Pools;</code></pre>
+
+            <br/>
+
+            <h3>Calling Ada code from C</h3>
+
+            <p>
+              Create your Ada source files, and compile them to object files
+              using the GNAT compiler, <code>gcc</code>. For example, let's assume you have
+              two Ada source files named <code>mypackage.ads</code> and <code>mypackage.adb</code>, and
+              you want to compile them to object files:
+            </p>
+
+            <pre><code class="language-bash">gcc -c mypackage.adb</code></pre>
+
+            <br/>
+            
+            <p>
+              Create a C source file that will call the Ada library function(s).
+              In this example, let's assume you want to call a function named
+              my_ada_function that is defined in <code>mypackage.ads</code>. The C source
+              file might look like this:
+            </p>
+            
+            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;;
+#include &quot;mypackage.h&quot;
+
+int main(int argc, char** argv) {
+    int result = my_ada_function();
+    printf(&quot;Result: %d\n&quot;, result);
+    return 0;
+}</code></pre>
+
+            <br/>
+
+            <p>
+              Create a C header file (mypackage.h) that declares the Ada function(s)
+              you want to call. In this example, the header file might look like this:
+            </p>
+
+            <pre><code class="language-c">#ifndef MYPACKAGE_H
+#define MYPACKAGE_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int my_ada_function();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MYPACKAGE_H */</code></pre>
+
+            <br/>
+
+            <p>
+              Use the GNAT compiler to generate C bindings for your Ada package:
+            </p>
+
+            <pre><code class="language-bash">gnatbind -Llibada.a -static -I. -C mypackage</code></pre>
+
+            <br/>
+
+            <p>
+              Use the C compiler to compile the C source file and link it
+              with the Ada library file and the C bindings file:
+            </p>
+            
+            <pre><code class="language-bash">#!/bin/bash -e
+gcc -c mypackage.adb.c
+gcc -c main.c
+gcc -o myprogram main.o mypackage.o -L. -lada</code></pre>
+
+            <br/>
+            
+            <p>
+              The Ada standard library handles Unicode using wide characters.
+              The package <code>Interfaces.C.Strings</code> does not support
+              UTF-8 or wide character encoding. It is wise to include
+              character transcoding functions on the C side instead of the
+              Ada side. Those functions should convert Unicode strings to
+              Ada <code>Wide_String</code> and similars.
+            </p>
+
+            <pre><code class="language-ada">with Interfaces.C;
+use Interfaces.C;
+with Interfaces.C.Strings;
+use Interfaces.C.Strings;
+
+package body Pollen.Strings is
+
+   --  ...
+
+   function Value (Input : chars_ptr)
+      return Wide_String
+   is
+      function To_Ada_Encoding (Input : chars_ptr; Output : Wide_String) return int;
+      pragma Import (C, To_Ada_Encoding, "tmpl_to_ada_encoding");
+
+      Output : Wide_String (1 .. Strlen (Input));
+      Return_Code : int;
+   begin
+      Return_code := To_Ada_Encoding (Input, Output);
+      if Return_Code /= 0 then
+         throw Program_Error with "Unable to convert C string to Pollen string.";
+      endif;
+      return Output;
+   end Value;
+
+   --  ...
+
+end Pollen.Strings;</code></pre>
+
+            <br/>
+
+            <h2>Development roadmap</h2>
+            <p>
+              The following is my future development:
+            </p>
+            <ol>
+              <li>Convert Quick to a series daemons</li>
+              <li>Remove autotools from Quick</li>
+              <li>Merge Quick with Templatizer</li>
+              <li>Add Ada code to the leaf-d operating system</li>
+            </ol>
+
+            <h2>JIT</h2>
+            <ul>
+              <li>GNU libjit (<a href="https://packages.debian.org/bullseye/libgccjit-10-dev">libgccjit-10-dev</a>)</li>
+              <li>LLVM bytecode</li>
+            </ul>
+            <p>
+              <a href="https://llvm.org/docs/tutorial/">Kaleidoscope</a> is an example of a JIT language that uses the LLVM code generation.
+            </p>
+
+            <h3>LLVM code generation</h3>
+            <p>
+              <code>llvm-config</code> is similar to <code>pkg-config</code>
+              but it is specific to LLVM code generation. llvm-config must be
+              found in <code>$PATH</code> for it to work. It is expected to be
+              only one llvm toolchain associated with that <code>llvm-config</code>.
+              That toolchain is responsible for code generation and may have
+              different architectures as targets.
+            </p>
+
+            <p>
+              Steps for producing bitcode with llvm-dev:
+            </p>
+
+<pre><code class="language-make">LLVM_CFLAGS=$(shell llvm-config --cflags)
+LLVM_LDFLAGS=$(shell llvm-config --ldflags --libs)
+</code></pre>
+
+            <br/>
+
+            <ol>
+              <li>Create a new Pollen plug-in</li>
+              <li>Add CFLAGS and LDFLAGS llvm-config</li>
+              <li>Create module;</li>
+              <li>Add code;</li>
+              <li>Add basic blocks;</li>
+              <li>Append basic block to program in memory;</li>
+              <li>Write bitcode to object file or BC file on HDD or SSD.</li>
+            </ol>
+            
+            <h2>Contributing</h2>
+            
+            <p>
+              Contributions to the Pollen project are wellcome.
+            </p>
+            
+            <p>
+              You may crate a bash script to automatically insert your Git
+              username and password. Push code to a Git repository using
+              simple HTTP authentication.
+            </p>
+            
+            <pre><code class="language-bash">#!/bin/bash -e
+
+git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git</code></pre>
+
+            <br/>
+
+            <h2>Hosting</h2>
+            <p>
+              Pollen requires running native code, so a typical PHP hosting
+              server will not work. Free CGI, Docker and VPS hosting are
+              difficult to find as of March 2023.
+            </p>
+
+            <p>
+              Google offers free hosting suitable for personal use on their
+              Cloud Run:
+            </p>
+
+            <blockquote>
+              Build and deploy scalable containerized apps written in any
+              language (including Go, Python, Java, Node.js, .NET, and Ruby)
+              on a fully managed platform.<br/>
+              <br/>
+              New customers get $300 in free credits to spend on Cloud Run.
+              All customers get 2 million requests free per month, not
+              charged against your credits.
+              <cite><a href="https://cloud.google.com/run/">Google Run Website</a> (access 2023-03-04)</cite>
+            </blockquote>
+
+            <h2>Pollen</h2>
+            <p>
+              The libpollen runtime has a function called <code>hello world</code>.
+              This function is supposed to be called from the tmpl script file.
+              The libpollen runtime is optional and is not required for a program
+              written in Pollen to run.
+            </p>
+            <p>
+              The compiler and the interpreter get the symbol for the "hello_world"
+              function in different ways.
+            </p>
+            <p>
+              The interpreter gets the symbol using dlopen on the runtime library
+              selected by the script. The select script is the "lib" atrribute on the
+              "pollen" element.
+            </p>
+            <p>
+              The compiler gets the symbol by using the linker as the object file
+              created created from the script is linked against libpollen.
+            </p>
+
+            <h2>External links</h2>
+            <ul>
+              <li><a href="https://pollen-lang.org/">Pollen Programming Language</a></li>
+              <li><a href="https://dlang.org/">D Programming Language</a></li>
+              <li><a href="https://www.rust-lang.org/">Rust Programming Language</a></li>
+              <li>
+                <span>
+                  Ada Programming Language:
+                </span>
+                <ul>
+                  <li><a href="https://alire.ada.dev/">Alire package manager</a></li>
+                  <li><a href="https://www.gnu.org/software/gnat/">GNAT compiler</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="grid-x grid-margin-y expanded">
+        <div class="medium-6 cell">
+          <ul class="menu">
+            <li><a href="https://ativarsoft.com">Start page</a></li>
+            <li><a href="https://ativarsoft.com/log/index.html">Blog</a></li>
+            <li><a href="https://github.com/ativarsoft/">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="medium-6 cell">
+          <ul class="menu align-right">
+            <li class="menu-text">Copyright © 2023 Mateus de Lima Oliveira</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../foundation/6.7.5/js/vendor/jquery.js"></script>
+    <script src="../foundation/6.7.5/js/vendor/what-input.js"></script>
+    <script src="../foundation/6.7.5/js/vendor/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      ///$('#book-canvas-menu').foundation('open', true);
+    </script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
