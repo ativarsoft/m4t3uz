@@ -1,0 +1,3 @@
+# robots.txt file of https://example.com/
+sitemap: https://ativarsoft.com/map.txt
+
