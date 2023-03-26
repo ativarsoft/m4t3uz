@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Pollen book</title>
+    <title>Seafood book</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9476237826538909"></script>
@@ -22,7 +22,7 @@
         <img src="https://ativarsoft.com/ativarsoft.png" alt="Ativarsoft" style="height: 4em">
       </div>
       <div class="title-bar-title">
-        <img src="https://pollen-lang.org/pollen-social-card.svg" alt="Pollen" style="height: 4em;">
+        <img src="https://seafood-lang.org/seafood-social-card.svg" alt="Seafood" style="height: 4em;">
       </div>
       <div class="title-bar-right">
         <button class="menu-icon" type="button" data-open="book-canvas-menu"></button>
@@ -40,23 +40,23 @@
         </button>
         <ul class="mobile-ofc vertical menu">
           <li>
-            <a href="#pollen-book"><img src="https://pollen-lang.org/pollen.svg" style="height: 2em;"/> Pollen: creating a secure portable assembler</a>
+            <a href="#seafood-book"><img src="https://seafood-lang.org/seafood.svg" style="height: 2em;"/> Seafood: creating a secure portable assembler</a>
           </li>
           <li>
             <ol>
-              <li><a href="#pollen-about">About this book</a></li>
-              <li><a href="#pollen-intro">Introduction</a></li>
+              <li><a href="#seafood-about">About this book</a></li>
+              <li><a href="#seafood-intro">Introduction</a></li>
             </ol>
           </li>
         </ul>
       </div>
 
       <div id="book-canvas-content" class="off-canvas-content" data-off-canvas-content>
-      <article id="pollen-book" class="grid-container">
+      <article id="seafood-book" class="grid-container">
 
         <div class="grid-x grid-margin-x grid-margin-y">
           <div class="cell">
-            <h1>Pollen: creating a secure portable assembler</h1>
+            <h1>Seafood: creating a secure portable assembler</h1>
             <h3>Mateus de Lima Oliveira</h3>
           </div>
         </div>
@@ -64,35 +64,35 @@
         <div class="grid-x grid-margin-x grid-margin-y">
           <div class="cell">
             <p>
-              Pollen is a programming language that I'm creating and will be relased soon.
+              Seafood is a programming language that I'm creating and will be relased soon.
             </p>
           </div>
         </div>
         
-        <div class="grid-x grid-margin-x grid-margin-y" id="pollen-about">
+        <div class="grid-x grid-margin-x grid-margin-y" id="seafood-about">
           <div class="cell">
             <h2>About this book</h2>
             <p>
-              This book is about Pollen programming language - a modern programming language designed to be a <strong>secure portable assembler</strong>.
+              This book is about Seafood programming language - a modern programming language designed to be a <strong>secure portable assembler</strong>.
               The C language was created to be a simple language that works like
               an assembly language that is portable between different machine architectures and operating systems.
-              Pollen tries to be like C in the aspect of being portable and having constructs that can be easily and intuitively
+              Seafood tries to be like C in the aspect of being portable and having constructs that can be easily and intuitively
               mapped to machine instructions and data.
             </p>
           </div>
         </div>
 
-        <div class="grid-x grid-margin-x grid-margin-y" id="pollen-intro">
+        <div class="grid-x grid-margin-x grid-margin-y" id="seafood-intro">
           <div class="cell">
             <h2>Introduction</h2>
             <p>
-              <b>Pollen</b> is based on a previous programming language written by myself that was codenamed <i>webutils</i>.
+              <b>Seafood</b> is based on a previous programming language written by myself that was codenamed <i>webutils</i>.
               webutils was designed to be a web template language.
               It didn't gain much attention because there are many web template languages out there
               and "webutils" was already a generic name for many web template languages out there on the internet.
             </p>
             <p>
-              Currently, there is only an interpreter for Pollen, but other code generation libraries will be supported soon.
+              Currently, there is only an interpreter for Seafood, but other code generation libraries will be supported soon.
               Multiple code generation libraries are intended to be supported by using an abstraction layer for them.
               This creates a slight and most of the times negligible performance penality, but makes the language
               portable across different platforms and operating systems, including embedded systems.
@@ -291,7 +291,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
               another language such as C.
             </p>
             <p>
-              That is exactly where Pollen comes into play. Pollen can be used
+              That is exactly where Seafood comes into play. Seafood can be used
               as a runtime for Ada for accessing modern operating system
               features, external libraries or other functionality that is not
               covered by the Ada runtime.
@@ -309,7 +309,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
               <li>Networking (Berkeley sockets).</li>
             </ul>
             <p>
-              Pollen brings all those features to Ada if used as a runtime.
+              Seafood brings all those features to Ada if used as a runtime.
             </p>
 
             <h3>Freestanding Ada code</h3>
@@ -321,7 +321,7 @@ typedef struct my_struct *my_struct_t;</code></pre>
             <p>
               Creating freestanding Ada code is more difficult because Ada requires
               a runtime to compile and to run. But the important part to understand
-              is that the Pollen should follow the example of having all the
+              is that the Seafood should follow the example of having all the
               runtime code required for a language to run on bare metal as
               freestanding code is that everything about the runtime must be covered
               on the standard and publicly available documentation so that kernel
@@ -509,7 +509,7 @@ use Interfaces.C;
 with Interfaces.C.Strings;
 use Interfaces.C.Strings;
 
-package body Pollen.Strings is
+package body Seafood.Strings is
 
    --  ...
 
@@ -524,14 +524,14 @@ package body Pollen.Strings is
    begin
       Return_code := To_Ada_Encoding (Input, Output);
       if Return_Code /= 0 then
-         throw Program_Error with "Unable to convert C string to Pollen string.";
+         throw Program_Error with "Unable to convert C string to Seafood string.";
       endif;
       return Output;
    end Value;
 
    --  ...
 
-end Pollen.Strings;</code></pre>
+end Seafood.Strings;</code></pre>
 
             <br/>
 
@@ -576,7 +576,7 @@ LLVM_LDFLAGS=$(shell llvm-config --ldflags --libs)
             <br/>
 
             <ol>
-              <li>Create a new Pollen plug-in</li>
+              <li>Create a new Seafood plug-in</li>
               <li>Add CFLAGS and LDFLAGS llvm-config</li>
               <li>Create module;</li>
               <li>Add code;</li>
@@ -588,7 +588,7 @@ LLVM_LDFLAGS=$(shell llvm-config --ldflags --libs)
             <h2>Contributing</h2>
             
             <p>
-              Contributions to the Pollen project are wellcome.
+              Contributions to the Seafood project are wellcome.
             </p>
             
             <p>
@@ -599,13 +599,13 @@ LLVM_LDFLAGS=$(shell llvm-config --ldflags --libs)
             
             <pre><code class="language-bash">#!/bin/bash -e
 
-git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git</code></pre>
+git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/seafood-lang.git</code></pre>
 
             <br/>
 
             <h2>Hosting</h2>
             <p>
-              Pollen requires running native code, so a typical PHP hosting
+              Seafood requires running native code, so a typical PHP hosting
               server will not work. Free CGI, Docker and VPS hosting are
               difficult to find as of March 2023.
             </p>
@@ -626,12 +626,12 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git<
               <cite><a href="https://cloud.google.com/run/">Google Run Website</a> (access 2023-03-04)</cite>
             </blockquote>
 
-            <h2>Pollen</h2>
+            <h2>Seafood</h2>
             <p>
               The libpollen runtime has a function called <code>hello world</code>.
               This function is supposed to be called from the tmpl script file.
               The libpollen runtime is optional and is not required for a program
-              written in Pollen to run.
+              written in Seafood to run.
             </p>
             <p>
               The compiler and the interpreter get the symbol for the "hello_world"
@@ -640,7 +640,7 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git<
             <p>
               The interpreter gets the symbol using dlopen on the runtime library
               selected by the script. The select script is the "lib" atrribute on the
-              "pollen" element.
+              "seafood" element.
             </p>
             <p>
               The compiler gets the symbol by using the linker as the object file
@@ -649,7 +649,7 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/pollen-lang.git<
 
             <h2>External links</h2>
             <ul>
-              <li><a href="https://pollen-lang.org/">Pollen Programming Language</a></li>
+              <li><a href="https://seafood-lang.org/">Seafood Programming Language</a></li>
               <li><a href="https://dlang.org/">D Programming Language</a></li>
               <li><a href="https://www.rust-lang.org/">Rust Programming Language</a></li>
               <li>
