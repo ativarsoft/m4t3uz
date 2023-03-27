@@ -731,7 +731,7 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/seafood-lang.git
         </div>
 
         <div class="grid-x grid-margin-xy">
-          <div class="large-6 cell">
+          <div class="cell">
             <p>
               The plugins directory on the source tree contains many fully functional examples
               of plugins that can be used with the <code>templatizer</code> XML element.
@@ -744,6 +744,57 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/seafood-lang.git
               XML element tags for the programmer. The compiler will generate call instructions;
               and the interpreter will call the element handler.
             </p>
+            <table>
+              <tr>
+                <th>Subsystem</th>
+                <th>Language</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>Compiler</td>
+                <td>C</td>
+                <td>Creates binary code from source code.</td>
+              </tr>
+              <tr>
+                <td>Interpreter</td>
+                <td>C</td>
+                <td>
+                  Executes code by interpreting it. (Note: the interpreted might be
+                  interpreted in multiple languages in the future)
+                </td>
+              </tr>
+              <tr>
+                <td>libpollen</td>
+                <td>C</td>
+                <td>Portable binding to operating system functions</td>
+              </tr>
+              <tr>
+                <td>libpollen-rs</td>
+                <td>Rust</td>
+                <td>
+                  Filter and processing functions in the Rust ABI.
+                  Provides memory-safety guarantees.
+                  Uses libpollen (the C library) for performing I/O and preserving state.
+                </td>
+              </tr>
+              <tr>
+                <td>libpollen-d</td>
+                <td>D</td>
+                <td>
+                  Filter and processing functions in the D ABI. Memory-safe.
+                  Provides memory-safety guarantees.
+                  Uses libpollen (the C library) for performing I/O and preserving state.
+                </td>
+              </tr>
+              <tr>
+                <td>myplugin.so</td>
+                <td>C, Rust, D or Ada</td>
+                <td>
+                  Provide I/O to the libpollen-rs, libpollen-d or libpollen-ada high-level
+                  runtime, which provide I/O to the low-level runtime (libpollen, the C library).
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
 
