@@ -57,7 +57,7 @@
         <div class="grid-x grid-margin-x grid-margin-y">
           <div class="cell">
             <h1>Seafood: creating a secure portable assembler</h1>
-            <h3>Mateus de Lima Oliveira</h3>
+            <h3>by Mateus de Lima Oliveira</h3>
           </div>
         </div>
 
@@ -97,6 +97,80 @@
               This creates a slight and most of the times negligible performance penality, but makes the language
               portable across different platforms and operating systems, including embedded systems.
             </p>
+          </div>
+        </div>
+        
+        <div class="grid-x grid-margin-xy">
+          <div class="large-6 cell">
+            <h2>Quickstart</h2>
+            <p>
+              This chapter will guide you through the basics of the Seafood programming language.
+            </p>
+            <pre>
+              <code class="language-xml">
+&lt;templatizer&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/in_helloworld.so&quot;/&gt;
+  &lt;p&gt;@&lt;/p&gt;
+  &lt;p&gt;Welcome to Pollen-lang!&lt;/p&gt;
+
+  &lt;h3&gt;Conditionals&lt;/h3&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/true.so&quot;/&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/false.so&quot;/&gt;
+  &lt;if&gt;
+    &lt;p&gt;This string should be displayed.&lt;/p&gt;
+  &lt;/if&gt;
+  &lt;if&gt;
+    &lt;p&gt;This string should not be displayed.&lt;/p&gt;
+  &lt;/if&gt;
+
+  &lt;h3&gt;Loops&lt;/h3&gt;
+  &lt;p&gt;The swhile (start while) loop is&lt;br/&gt;similar to the&lt;br/&gt;while(...) {...} loop.&lt;/p&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/true.so&quot;/&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/true.so&quot;/&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/true.so&quot;/&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/false.so&quot;/&gt;
+  &lt;p&gt;&lt;swhile&gt;🥰&lt;/swhile&gt;&lt;/p&gt;
+  &lt;p&gt;The ewhile (end while) loop is&lt;br/&gt;similar to the&lt;br/&gt;do {...} while(...); loop.&lt;/p&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/true.so&quot;/&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/true.so&quot;/&gt;
+  &lt;templatizer lib=&quot;/usr/lib/pollen/plugins/false.so&quot;/&gt;
+  &lt;p&gt;&lt;ewhile&gt;😍&lt;/ewhile&gt;&lt;/p&gt;
+  &lt;p&gt;Have fun with Pollen-lang!&lt;/p&gt;
+&lt;/templatizer&gt;
+              </code>
+            </pre>
+            <p>
+              In this example, the first <code>templatizer</code> element serves as the purpose of
+              being the root node. The XML standard requires that XML must have only one element.
+              All the other elements are placed inside it. The elements inside an element are called
+              children nodes and - the node itself - the parent node.
+            </p>
+            <p>
+              The second <code>templatizer</code> element loads a plug-in (a dynamic library) with
+              the filename <code>in_helloworld.so</code>. This plug-in (written in C in this example)
+              provides input to the next &quote;@&quot; sign. That sign is a placeholder for plug-in
+              output. Seafood will buffer the plug-in output until the next placeholder is reached.
+            </p>
+            <p>
+              The control flow keywords <code>if</code>, <code>swhile</code> (start while) and
+              <code>ewhile</code> (end while)
+              also take input from the plug-in, but it is a different type of input.
+              The &quot;@&quot; placeholder takes text as input. The control flow elements take a
+              boolean value as input. The runtime can differ the type of boolean inputs and placeholder
+              input and quits the program if a type error is found.
+            </p>
+            <p>
+              A <code>swhile</code> element is similar to the following C code:
+            </p>
+            <pre><code class="language-c">while (boolean_input_from_plugin) {
+    ...
+}</code></pre>
+            <p>
+              A <code>ewhile</code> element is similar to the following C code:
+            </p>
+            <pre><code class="language-c">do {
+    ...
+} while (boolean_input_from_plugin);</code></pre>
           </div>
         </div>
 
@@ -651,11 +725,31 @@ git push https://mygithubuser:ghp_mytoken@github.com/ativarsoft/seafood-lang.git
               created created from the script is linked against libpollen.
             </p>
           </div>
+          <div class="large-2 cell"/>
           <div class="large-2 cell">
             <img src="Diagram1.png" alt="Diagram 1: binary structure"/>
           </div>
         </div>
 
+        <div class="grid-x grid-margin-xy">
+          <div class="large-6 cell">
+            <p>
+              The plugins directory on the source tree contains many fully functional examples
+              of plugins that can be used with the <code>templatizer</code> XML element.
+            </p>
+            <p>
+              Those do just one thing and do it well.
+            </p>
+            <p>
+              For pratical uses of Seafood programs, a runtime plug-in should provide multiple
+              XML element tags for the programmer. The compiler will generate call instructions;
+              and the interpreter will call the element handler.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-x grid-margin-xy">
+          <div class="large-6 cell">
             <h2>External links</h2>
             <ul>
               <li><a href="https://seafood-lang.org/">Seafood Programming Language</a></li>
